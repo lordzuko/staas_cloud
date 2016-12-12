@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="row" style="margin-top: 15%;">
+            <div class="col-md-4 col-sm-4 col-md-offset-4 col-sm-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Please Sign Up</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form method="post" action="{% url 'signup' %}">
+                            {% csrf_token %}
+
+                            {{signupform}}
+
+                            <p class="bs-component">
+                                <center>
+                                    <input id="register" class="btn btn-success btn-sm" type="submit" value="Register" />
+                                </center>
+                            </p>
+                        </form>
+                        <center><div id="err" style="color:red;"></div></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+    
+    $("nav").css("display","none");
+
+    usernames = [];
+    {% for u in usernames %}
+        usernames.push("{{u.username}}");
+    {% endfor %}
+    
+    $(document).on('blur', '#id_username', function(){
+        var username = $(this).val();
+
+        if(usernames.indexOf(username) >= 0){
+            $('#register').attr('disabled', true);
+            $('#err').html('This user name has already been taken. Try some other!');
+        }
+        else{
+            $('#register').attr('disabled', false);
+            $('#err').html('');
+        }
+    });
+
+    $(document).on('blur', '#id_password, #id_rep_password', function(){
+        var passw = $('#id_password').val();
+        var rep_passw = $('#id_rep_password').val();
+
+        if(passw && rep_passw){
+            if(passw===rep_passw){
+                $('#register').attr('disabled', false);
+                $('#err').html('');
+            }
+            else{
+                $('#register').attr('disabled', true); 
+                $('#err').html('Passwords do not match!');
+            }
+        }
+    });
+
+</script>
+
+{% endblock %}

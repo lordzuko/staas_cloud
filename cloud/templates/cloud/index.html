@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<center>
+		<button name="upload_btn" id="upload_btn" class="btn btn-info btn-sm" data-toggle="modal" data-target="#upload">Upload</button>
+		<hr>
+		<div id="uploaded_files">
+			<table class="table table-bordered">
+				<tr>
+					<th>Name</th>
+					<th>Size</th>
+					<th>Uploaded At</th>
+				</tr>
+			{% for file,real_name in uploads %}
+				<tr>
+					<td><a href='/storage/{{file.upload_file.name}}'>{{real_name}}</a></td>
+					<td>{{file.upload_file.size}} bytes</td>
+					<td>{{file.uploaded_at}}</td>
+				</tr>
+			{% endfor %}
+			</table>
+		</div>
+	</center>
+
+	<div id="upload" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">Upload a file</h4>
+	      </div>
+	      <div class="modal-body">
+	      	<form action="upload/" method="post" enctype="multipart/form-data">
+	      		{% csrf_token %}
+	      		<input type="file" name="upload_file">
+	      		<center>
+	      			<input type="submit" id="_upload" value="Upload" class="btn btn-info">
+	      		</center>
+
+	      	</form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+{% endblock %}
