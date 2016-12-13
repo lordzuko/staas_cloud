@@ -16,6 +16,7 @@ class SignUpForm(forms.Form):
 
     password = forms.CharField(label="Password", max_length=30, min_length=8,
     							widget=forms.PasswordInput(attrs={'class': 'form-control', 'name': 'password', 'required':True}))
+
     rep_password = forms.CharField(label="Password (again)", max_length=30, min_length=8,
     							widget=forms.PasswordInput(attrs={'class': 'form-control', 'name': 'rep_password', 'required':True}))
 

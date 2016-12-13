@@ -87,3 +87,9 @@ ENV/
 
 # Rope project settings
 .ropeproject
+.idea/markdown-navigator/
+.idea/misc.xml
+.idea/modules.xml
+.idea/staas_cloud.iml
+.idea/workspace.xml
+db.sqlite3
