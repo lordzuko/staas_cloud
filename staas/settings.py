@@ -33,15 +33,16 @@ MEDIA_URL = '/storage/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Application definition
+#     'cloud.apps.CloudConfig',
 
 INSTALLED_APPS = [
-    'cloud.apps.CloudConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloud'
 ]
 
 MIDDLEWARE_CLASSES = [
