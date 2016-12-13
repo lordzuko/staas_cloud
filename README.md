@@ -1,7 +1,7 @@
 # staas_cloud
 
 ###How to run
-    python manage.py makemigration [appname]
+    python manage.py makemigrations [appname]
     python manage.py migrate
     
 ###How to commit
