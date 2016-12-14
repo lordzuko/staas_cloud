@@ -12,3 +12,5 @@ class Uploads(models.Model):
 
 	class Meta:
 		db_table = 'uploads'
+
+
