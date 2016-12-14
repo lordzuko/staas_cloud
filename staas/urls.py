@@ -19,12 +19,14 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.conf.urls.static import static
 from cloud.forms import LoginForm
+from cloud import views as cloud_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^login/', auth_views.login, {'template_name': 'login.html', 'authentication_form': LoginForm }, name='login'),
     url(r'^logout/$', auth_views.logout, {'next_page': '/login/'}),
-    url(r'^cloud/', include('cloud.urls'))
+    url(r'^cloud/', include('cloud.urls')),
+    url(r'^signup/$', cloud_views.signup, name="signup"),
 ]
 
 if settings.DEBUG:
