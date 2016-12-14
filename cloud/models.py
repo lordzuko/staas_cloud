@@ -12,9 +12,3 @@ class Uploads(models.Model):
 
 	class Meta:
 		db_table = 'uploads'
-
-class Notification(models.Model):
-	user = models.ForeignKey(User, on_delete=models.CASCADE)
-	message = models.CharField(max_length=50)
-	created_at = models.DateTimeField(auto_now_add=True)
-	has_read = models.BooleanField(default=False)
