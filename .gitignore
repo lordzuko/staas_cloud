@@ -93,3 +93,4 @@ ENV/
 .idea/staas_cloud.iml
 .idea/workspace.xml
 db.sqlite3
+cloud/migrations
